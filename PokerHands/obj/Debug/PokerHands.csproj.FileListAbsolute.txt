@@ -1,1 +1,6 @@
 C:\Users\Technologist\Documents\GitHub\PokerHands\PokerHands\bin\Debug\PokerHands.exe.config
+C:\Users\Technologist\Documents\GitHub\PokerHands\PokerHands\bin\Debug\PokerHands.exe
+C:\Users\Technologist\Documents\GitHub\PokerHands\PokerHands\bin\Debug\PokerHands.pdb
+C:\Users\Technologist\Documents\GitHub\PokerHands\PokerHands\obj\Debug\PokerHands.csprojResolveAssemblyReference.cache
+C:\Users\Technologist\Documents\GitHub\PokerHands\PokerHands\obj\Debug\PokerHands.exe
+C:\Users\Technologist\Documents\GitHub\PokerHands\PokerHands\obj\Debug\PokerHands.pdb
