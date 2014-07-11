@@ -41,13 +41,16 @@ namespace PokerHands
         {
             //selects only ranks for cards and if only 4 values there is at least
             //one pair in the hand
-            return this.Cards.Select(x => x.Rank).Distinct().Count() == 4;
+            var temp = this.Cards.GroupBy(x => x.Rank);
+
+            return temp.Where(x => x.Count() == 2).Any();
         }
 
         public bool TwoPair()
         {
             //selects cards if they are a pair
-            return this.Cards.Select(x => x.Rank).Distinct().Count() == 3;
+            var temp = this.Cards.GroupBy(x => x.Rank);
+            return temp.Where(x => x.Count() == 2).Count() == 2;
         }
 
         public bool FullHouse()
@@ -88,9 +91,9 @@ namespace PokerHands
         public bool ThreeOfAKind()
         {
             //if three cards have the same rank it's three of a kind
-            var tmp = this.Cards.GroupBy(x => x.Rank).Select(x => new {Rank = x.Key, Count = x.Count()}).OrderByDescending(x => x.Count);
+            var tmp = this.Cards.GroupBy(x => x.Rank);
 
-            return tmp.First().Count == 3;
+            return tmp.Where(x=>x.Count() == 3).Any();
         }
 
         public bool FourOfAKind()
@@ -112,6 +115,7 @@ namespace PokerHands
             {
                 return false;
             }
+    
         }
 
         public bool HighCard()
@@ -124,6 +128,47 @@ namespace PokerHands
             else
             {
                 return true;
+            }
+        }
+
+        public void PokerHand()
+        {
+            
+            if (RoyalFlush())
+            {
+                 Console.WriteLine("You have a royal flush");
+            }
+            else if(FourOfAKind())
+            {
+                Console.WriteLine("You have four of a kind");
+            }
+            else if (ThreeOfAKind())
+            {
+                 Console.WriteLine("You have three of a kind");
+            }
+            else if (StraightFlush())
+            {
+                 Console.WriteLine("You have a straight flush");
+            }
+            else if (Straight())
+            {
+                 Console.WriteLine("You have a straight");
+            }
+            else if (TwoPair())
+            {
+                 Console.WriteLine("You have two pair");
+            }
+            else if (HasPair())
+            {
+                 Console.WriteLine("You have a pair");
+            }
+            else if(IsFlush())
+            {
+                Console.WriteLine("You have a flush");
+            }
+            else if (HighCard())
+            {
+                Console.WriteLine("You are not good a poker. Don't hit the ATM.");
             }
         }
     }
