@@ -99,7 +99,9 @@ namespace PokerHands
         public bool FourOfAKind()
         {
             //if there are four cards of the same rank it's four of a kind
-            return this.Cards.Select(x => x.Rank).Distinct().Count() == 2;
+            var temp = this.Cards.GroupBy(x=>x.Rank);
+
+            return temp.Where(x => x.Count() == 4).Any(); 
         }
 
         public bool RoyalFlush()
@@ -142,10 +144,15 @@ namespace PokerHands
             {
                 Console.WriteLine("You have four of a kind");
             }
+            else if (FullHouse())
+            {
+                Console.WriteLine("You have a full house");
+            }
             else if (ThreeOfAKind())
             {
                  Console.WriteLine("You have three of a kind");
             }
+            
             else if (StraightFlush())
             {
                  Console.WriteLine("You have a straight flush");

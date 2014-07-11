@@ -11,7 +11,7 @@ namespace PokerHands
         static void Main(string[] args)
         {
 
-            Hand myHand = new Hand("TS JS QS KS AS");
+            Hand myHand = new Hand("5H 5S 5D 5C 4D");
             myHand.PokerHand();
             Console.WriteLine();
             Console.ReadKey();
